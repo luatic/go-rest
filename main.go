@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -13,5 +14,9 @@ func main() {
 }
 
 func test(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("this is a test !!!"))
+	json.NewEncoder(w).Encode(struct {
+		ID string
+	}{
+		ID: "1212",
+	})
 }
